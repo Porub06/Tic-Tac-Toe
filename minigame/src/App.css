@@ -1,5 +1,6 @@
 .board-row {
     display: flex;
+    justify-content: center;
 }
 
 .square {
@@ -12,6 +13,7 @@
     align-items: center;
     justify-content: center;
     font-size: 85px;
+    background-color: #996349;
 }
 
 .square.lastcell {
@@ -32,10 +34,13 @@
 }
 
 .reset-button {
+    margin-left: 700px;
     margin-top: 16px;
-    padding: 10px 16px;
+    padding: 15px 30px;
     font-size: 1rem;
     cursor: pointer;
+    justify-content: center;
+    background-color: #c1a095;
 }
 html {
     --sz: 10px;
