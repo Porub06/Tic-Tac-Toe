@@ -3,46 +3,7 @@
     justify-content: center;
 }
 
-.square {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    margin-top: -1px;
-    margin-right: -1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 85px;
-    background-color: #996349;
-}
-
-.square.lastcell {
-    background-color: lightgray;
-}
-
-.game-status {
-    color: aliceblue;
-    margin: 0 0 12px;
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.scoreboard {
-    color: aliceblue;
-    margin: 0 0 8px;
-    font-weight: 600;
-}
-
-.reset-button {
-    margin-left: 700px;
-    margin-top: 16px;
-    padding: 15px 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    justify-content: center;
-    background-color: #c1a095;
-}
-html {
+.app {
     --sz: 10px;
     --c1: #c1a095;
     --c2: #996349;
@@ -51,11 +12,17 @@ html {
     --c5: #612f0e;
     --c6: #4c230e;
     --c7: #2a0b00;
+    --text-color: aliceblue;
+    --square-color: #996349;
+    --highlight-color: lightgray;
     --ts: 50% / calc(var(--sz) * 20) calc(var(--sz) * 13.33);
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    color: var(--text-color);
     background:
         conic-gradient(from -135deg at 6.5% 90%, var(--c2) 0 15%, #fff0 0 100%) var(--ts),
         conic-gradient(from 135deg at 93.5% 90%, var(--c7) 0 37.5%, #fff0 0 100%) var(--ts),
@@ -68,4 +35,78 @@ html {
         conic-gradient(from 45deg at 80% 30%, var(--c1) 0 37.5%, #fff0 0 100%) var(--ts),
         conic-gradient(from -180deg at 20% 30%, var(--c7) 0 37.5%, var(--c6) 0 75%, #fff0 0 100%) var(--ts),
         var(--c4);
+    transition: color 250ms ease, background-color 250ms ease;
+}
+
+.app.light-theme {
+    --c1: #fff5dc;
+    --c2: #f3dfb2;
+    --c3: #e7cc91;
+    --c4: #f6ebd0;
+    --c5: #fff7e6;
+    --c6: #dfc898;
+    --c7: #fffaf0;
+    --text-color: #222;
+    --square-color: #fffaf0;
+    --highlight-color: #f3e5c4;
+}
+
+.theme-button {
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    color: var(--text-color);
+    background-color: var(--c4);
+    font: inherit;
+    cursor: pointer;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin-top: -1px;
+    margin-right: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 85px;
+    color: var(--text-color);
+    background-color: var(--square-color);
+}
+
+.square.lastcell {
+    background-color: var(--highlight-color);
+}
+
+.game-status {
+    color: var(--text-color);
+    margin: 0 0 12px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.scoreboard {
+    margin: 0 0 8px;
+    font-weight: 600;
+}
+
+.reset-button {
+    display: block;
+    margin: 16px auto 0;
+    padding: 15px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    justify-content: center;
+    color: var(--text-color);
+    background-color: var(--c4);
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }

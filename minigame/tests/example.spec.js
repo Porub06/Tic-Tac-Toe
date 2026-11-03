@@ -22,3 +22,16 @@ test("players take turns", async ({ page }) => {
     texts = await squares.nth(1).textContent();
     expect(texts).toEqual("O");
 });
+
+test("the theme button switches between dark and light themes", async ({ page }) => {
+    const themeButton = page.getByRole("button", { name: "Téma" });
+
+    await expect(themeButton).toHaveAttribute("aria-pressed", "false");
+    await themeButton.click();
+    await expect(themeButton).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator("main")).toHaveClass(/light-theme/);
+
+    await themeButton.click();
+    await expect(themeButton).toHaveAttribute("aria-pressed", "false");
+    await expect(page.locator("main")).not.toHaveClass(/light-theme/);
+});
