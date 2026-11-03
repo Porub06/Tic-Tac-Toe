@@ -77,6 +77,7 @@ export default function Board() {
                     })}
                 </div>
             ))}
+            {gameOver && winner && <div>Game over! {winner} won</div>}
             {gameOver && (
                 <button className="reset-button" type="button" onClick={handlePlayAgain}>
                     Play again
